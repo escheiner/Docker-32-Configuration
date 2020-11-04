@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  gcc:
+    build: ./
+    image: u32
+    volumes:
+       - .:/workspace
+    privileged: true
+    entrypoint: gcc -m32 -ggdb -fno-stack-protector -mpreferred-stack-boundary=2 -zexecstack
+  gdb:
+    build: ./
+    image: u32
+    volumes:
+       - .:/workspace
+    privileged: true
+    entrypoint: gdb -q
+  u32:
+    build: ./
+    image: u32
+    volumes:
+       - .:/workspace
+    privileged: true
+  bash:
+    build: ./
+    image: u32
+    volumes:
+       - .:/workspace
+    privileged: true
+    entrypoint: bash -c
